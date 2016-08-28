@@ -176,8 +176,10 @@ passport.deserializeUser(function (user, done) {
 
 function _getLogout(req, res) {
   req.logout();
-  req.session = null;
-  res.redirect(proxyPath + "/");
+  req.session.destroy(function() {
+    res.clearCookie('connect.sid');
+    res.redirect(proxyPath + "/");
+  });
 }
 
 function _getAuthDoneSQL(req,res,next) {
