@@ -1,9 +1,10 @@
-[![NPM](https://nodei.co/npm/jingo.png?compact=true)](https://npmjs.org/package/jingo)
-
-[ ![Codeship Status for claudioc/jingo](https://www.codeship.io/projects/4c413870-353e-0132-115c-220292a78f73/status)](https://www.codeship.io/projects/40997)
-
-JINGO
+OSMWW
 =====
+
+OSMWW is a [![NPM](https://nodei.co/npm/jingo.png?compact=true)](https://npmjs.org/package/jingo) Clone
+to support & integrate Jingo to the editorial process of the OpenStreetMap WeeklyOSM & Wochennotiz Team.
+
+
 
 A **git based** _wiki engine_ written for **node.js**, with a decent design, a search capability and a good typography.
 
