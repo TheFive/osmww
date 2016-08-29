@@ -2,15 +2,15 @@ include links
 
 mixin tools(action, pageName)
   if action == 'edit'
-    ul
+    ul.pagination
       if pageName != 'home'
         li
           form(action="#{proxyPath}/pages/#{pageName}", method="post", style="display:inline")
             input(type="hidden", name="_method", value="delete")
-            input(type="submit", value="Delete this page").confirm-delete-page.btn.btn-default
+            input(type="submit", value="Delete page").confirm-delete-page.btn.btn-default
 
   if action == 'show'
-    ul
+    ul.pagination
       if !isAnonymous()
         li
           +anchor("/pages/new")(title="Create new page").btn.btn-sm.btn-default
@@ -33,7 +33,7 @@ mixin tools(action, pageName)
             i.icon.ion-search
 
   if action == 'history'
-    ul
+    ul.pagination
       li
         +anchor("/wiki")(title="All pages").btn.btn-sm.btn-default
           i.icon.ion-grid
