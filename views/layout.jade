@@ -48,12 +48,12 @@ include mixins/links
 
         .row
           if hasSidebar()
-            .col-md-2.with-sidebar
+            .col-md-1.with-sidebar
               .content !{_sidebar}
           else
-            .col-md-2
+            .col-md-1
 
-          #main.hide-tools.col-md-9
+          #main.hide-tools.col-md-10
             block content
           // enable tools row as column here
           .col-md-1
@@ -61,8 +61,8 @@ include mixins/links
 
         if hasFooter()
           .row
-            .col-md-2
-            .col-md-8.with-footer
+            .col-md-1
+            .col-md-10.with-footer
               .content !{_footer}
 
       script(src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
