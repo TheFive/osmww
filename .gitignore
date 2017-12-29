@@ -5,3 +5,4 @@ data/*
 workspace.xml
 tasks.xml
 
+package-lock.json

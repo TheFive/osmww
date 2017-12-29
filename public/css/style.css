@@ -1,3 +1,9 @@
+@media print {
+	.col-md-2, .with-sidebar {
+		display: none;
+	}
+}
+
 body {
   padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
   font-family: "Ubuntu";
@@ -453,17 +459,6 @@ ul.doc-list > li .message {
   font-size: 9px;
   line-height: 12px;
   margin: 0;
-}
-
-/* Needed for wideArea */
-.markItUpHeader {
-  position: relative;
-  z-index: 2;
-}
-
-.markItUpEditor {
-  height: 500px !important;
-  font-family: Consolas, monospace !important;
 }
 
 .toolbar {
