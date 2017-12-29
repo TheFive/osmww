@@ -1,3 +1,60 @@
+Version 1.8.3, May 28th, 2017
+==================================
+
+- Updates to LDAP authentication (#212 by @ScreamingHawk)
+
+Version 1.8.2, May 20th, 2017
+==================================
+
+- Closes #152 (You can now disable Gravatar)
+- Closes #129 (Adds logo support)
+- Fixes #216 ()
+- Always uses local jQuery and not Google's
+- Adds favicon support
+
+Version 1.8.1, May 17th, 2017
+==================================
+
+This is just a small fix release
+- Fix #211 (pug migration regression bug)
+- Merge #209 (pug migration regression bug)
+- Adds @ScreamingHawk to contributors
+
+Version 1.8.0, March 11th, 2017
+==================================
+
+- Upgrade from Jade to Pug 2 (needed for copyright reasons)
+- Removes support for Markitup
+- Upgrade to jQuery 2.x
+- Upgrades of various npm modules
+- Removes the need of installing mocha globally (for testing)
+- Removes obsolete script directory
+
+Version 1.7.3, January 8th, 2017
+==================================
+
+- Small set of fixed: merges #189, #190 and #191
+
+Version 1.7.2, December 4th, 2016
+==================================
+
+- Closes #183 (accessible document list)
+- Closes #182 (case insensitive test on SHA-1 passwords)
+- Reads Jingo version from packages.json (no manual edit for version bump)
+
+Version 1.7.1, November 5th, 2016
+==================================
+
+- Merges #179
+- Refines README
+- Adopts Standardjs as the formatting standard for the project
+
+Version 1.7.0, September 18th, 2016
+==================================
+
+- Fixes #164 (ProxyPath not used on /login)
+- Adds LDAP authentication support (@everpcpc). Requires manual installation of `passport-ldapauth`
+
 Version 1.6.1, January 27th, 2016
 ==================================
 

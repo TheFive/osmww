@@ -7,7 +7,7 @@ JINGO
 
 A **git based** _wiki engine_ written for **node.js**, with a decent design, a search capability and a good typography.
 
-![Screenshot](https://dl.dropboxusercontent.com/u/152161/jingo/ss1.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/166692/26024412/f0cb9206-37d0-11e7-9748-8101fc4e662f.png)
 
 <!-- toc -->
 
@@ -18,7 +18,6 @@ Table of contents
   * [Features](#features)
   * [Installation](#installation)
   * [Authentication and Authorization](#authentication-and-authorization)
-  * [Common problems](#common-problems)
   * [Known limitations](#known-limitations)
   * [Customization](#customization)
   * [Editing](#editing)
@@ -37,23 +36,24 @@ Think of jingo as "the github wiki, without github but with more features". "Jin
 
 There is a demo server running at http://jingo.cica.li:6067/wiki/home
 
-![Screenshot](https://dl.dropboxusercontent.com/u/152161/jingo/ss2.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/166692/26024413/f53612c6-37d0-11e7-8dd2-01c9ed993cc6.png)
 
 Features
 --------
 
-- No database: it uses a git repository as the document archive
+- No database: Jingo uses a git repository as the document archive
 - Markdown for everything, [github flavored](http://github.github.com/github-flavored-markdown/)
-- Uses [Codemirror](http://codemirror.net/) or [Markitup](http://markitup.jaysalvat.com/home/) as the markup editor, with a nice (ajax) preview (see the `features` key in the config file)
-- Provides a "distraction free", almost full screen editing mode
+- Jingo uses [Codemirror](http://codemirror.net/) or [Markitup](http://markitup.jaysalvat.com/home/) as the markup editor, with a nice (ajax) preview (see the `features` key in the config file)
+- It provides a "distraction free", almost full screen editing mode
 - Compatible with a wiki created with the [Gollum](https://github.com/github/gollum) wiki
-- Revision history for all the pages (and restore)
+- Revision history for all the pages (with restore)
 - Show differences between document revisions
 - Paginated list of all the pages, with a quick way to find changes between revisions
 - Search through the content _and_ the page names
 - Page layout accepts custom sidebar and footer
 - Gravatar support
 - Can include IFRAMEs in the document (es: embed a Google Drive document)
+- Generate Table of Contents for pages
 - Can use custom CSS and JavaScript scripts
 - White list for authorization on page reading and writing
 - Detects unwritten pages (which will appear in red)
@@ -62,10 +62,11 @@ Features
 - Quite configurable, but also works out of the box
 - Works well behind a proxy (i.e.: the wiki can be "mounted" as a directory in another website)
 - Pages can be embedded into another site
+- Authentication via Google, Github, LDAP and local name/password
 
 For code syntax highlighting, Jingo uses the `node-syntaxhighlighter` module. For the list of supported languages, please refer to [this page](https://github.com/thlorenz/node-syntaxhighlighter/tree/master/lib/scripts).
 
-![Screenshot](https://dl.dropboxusercontent.com/u/152161/jingo/ss3.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/166692/26024414/f8470cb8-37d0-11e7-9c96-5193aca12591.png)
 
 Installation
 ------------
@@ -78,7 +79,7 @@ Jingo needs a config file and to create a sample config file, just run `jingo -s
 
 This document contains also [the reference](#configuration-options-reference) for all the possible options.
 
-If you define a `remote` to push to, then Jingo will automatically issue a push to that remote every `pushInterval` seconds. To declare a `remote` for Jingo to use, you'll need to identify the name of your local remote. The following example shows how a local remote is typically defined: 
+If you define a `remote` to push to, then Jingo will automatically issue a push to that remote every `pushInterval` seconds. To declare a `remote` for Jingo to use, you'll need to identify the name of your local remote. The following example shows how a local remote is typically defined:
 
 `git remote add origin https://github.com/joeuser/jingorepo.git'`
 
@@ -102,12 +103,12 @@ If your documents reside in subdirectory of your repository, you need to specify
 
 If you want your wiki server to only listen to your `localhost`, set the configuration key `localOnly` to true.
 
-![Screenshot](https://dl.dropboxusercontent.com/u/152161/jingo/ss4.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/166692/26024415/fc211aea-37d0-11e7-9ae2-77ce32cedb07.png)
 
 Authentication and Authorization
 --------------------------------
 
-You can enable the following strategies: _Google logins (OAuth2)_, _GitHub logins (OAuth2)_, _OpenStreetMap logins (OAuth2)_ or a simple, locally verified username/password credentials match (called "local").
+You can enable the following strategies: _Google logins (OAuth2)_, _GitHub logins (OAuth2)_, _ldap logins_,_OpenStreetMap logins (OAuth2)_  or a simple, locally verified username/password credentials match (called "local").
 
 The _Google Login_ and the _GitHub login_ (as the _OpenStreetMap login_) uses OAuth 2 and that means that on a fresh installation you need to get a `client id` and a `client secret` from Google or GitHub and put those informations in the configuration file.
 
@@ -131,6 +132,7 @@ For GitHub, follow these instructions (you need to be logged in in GitHub):
 * In the following page, on the top right corner, take note of the values for `Client ID` and `Client Secret`
 * Now you need to copy the `Client ID` and `Client secret` in your jingo config file in the proper places
 
+<<<<<<< HEAD
 For OpenStreetMap, follow these instructions (you need to be logged in in OpenSteetMap):
 
 * Go to the Settings of your User Account
@@ -144,14 +146,22 @@ For OpenStreetMap, follow these instructions (you need to be logged in in OpenSt
 * In the following page, on the top right corner, take note of the values for `Client ID` and `Client Secret`
 * Now you need to copy the `Client ID` and `Client secret` in your jingo config file in the proper places
 * If you are using OpenSteetMap OAuth2 please disable _authorization.emptyEmailMatches_ as OpenStreetMap is NOT publishing User EMail adresses.
+=======
+**Warning** In certain cases the Github authentication system return an empty email and Jingo is not happy about this. To avoid problems, when using Github set the `authorization.emptyEmailMatches` configuration option to `true`.
+
+The _ldap_ method uses `url` as the ldap server url, and optionally a `bindDn` and `bindCredentials` if needed. The `searchBase` and `searchFilter` are required for searching in the tree. In the configuration `searchAttributes` is also available.
+Since we want to install the (binary) support to LDAP only when needed, please _manually_ `npm install passport-ldapauth` to use the LDAP support.
+>>>>>>> 94a792e12873c538b6f38e622d144776df2d8e78
 
 The _local_ method uses an array of `username`, `passwordHash` and optionally an `email`. The password is hashed using a _non salted_ SHA-1 algorithm, which makes this method not the safest in the world but at least you don't have a clear text password in the config file. To generate the hash, use the `--hash-string` program option: once you get the hash, copy it in the config file.
 
 You can enable all the authentications options at the same time. The `local` is disabled by default.
 
-The _authorization_ section of the config file has two keys: `anonRead` and `validMatches`. If the `anonRead` is true, then anyone who can access the wiki can read anything.
+The _authorization_ section of the config file has three keys: `anonRead`, `validMatches` and `emptyEmailMatches`.
 
-If anonRead is false you need to authenticate also for reading and then the email of the user _must_ match at least one of the regular expressions provided via validMatches, which is a comma separated list. There is no "anonWrite", though. To edit a page the user must be authenticated.
+If `anonRead` is true, then anyone who can access the wiki can read anything. If `anonRead` is false you need to authenticate also for reading and then the email of the user _must_ match at least one of the regular expressions provided via validMatches, which is a comma separated list. There is no "anonWrite", though. To edit a page the user must be authenticated.
+
+`emptyEmailMatches` allows access when remote authentication providers do not provide an email address as part of user data. It defaults to `false`, but will usually need to be set to `true` for GitHub authentication (GitHub only returns email addresses that have been made public on users' GitHub accounts).
 
 The authentication is mandatory to edit pages from the web interface, but jingo works on a git repository; that means that you could skip the authentication altogether and edit pages with your editor and push to the remote that jingo is serving.
 
@@ -212,6 +222,14 @@ Configuration options reference
 
   This will be showed on the upper left corner of all the pages, in the main toolbar
 
+#### application.logo (string: "")
+
+  Supply the full URL to an image to be shown as the logo of your wiki. It will appear on the left of the page title in the navigation bar. Just set the `application.title` to an empty string to only show the Logo image. Please note that Jingo does not resize the image in any way (you can do it yourself using a custom CSS of course)
+
+#### application.favicon (string: "")
+
+  Supply the full URL to an image to be shown as the favicon of your wiki. Please note that Jingo will try to get the mime type of the image from its extension (this can easily fail for a lot of reasons)
+
 #### application.repository (string: "")
 
   Absolute path for your documents repository (mandatory).
@@ -252,17 +270,17 @@ Configuration options reference
 
   With this option you can revert this decision if for some reason your documents are not rendered how you like.
 
-####application.gfmBreaks (boolean: true)
+#### application.gfmBreaks (boolean: true)
 
   Enable [GFM line breaks](https://help.github.com/articles/github-flavored-markdown#newlines)
 
-####application.proxyPath (string: "")
-  
+#### application.proxyPath (string: "")
+
   If you want jingo to work "behind" another website (for example in a /wiki directory of an already existing intranet), you need to configure it to be aware of that situation so that it can write all the outbound URLs accordingly. Use this option to pass it the name of the directory that you've configured in your proxy_pass option in nginx or apache. See also an nginx example in the /etc directory of the jingo source distribution.
 
   Please note that jingo won't work correctly if this option is activated.
 
-####authentication.staticWhitelist (string: "/\\.png$/i, /\\.jpg$/i, /\\.gif$/i")
+#### authentication.staticWhitelist (string: "/\\.png$/i, /\\.jpg$/i, /\\.gif$/i")
 
   This is to enable jingo to serve any kind of static file (like images) from the repository. By default, Jingo will serve `*.md` files and `*.jpg, *.png, *.gif`. Provide the values as a comma separated list of regular expressions.
 
@@ -305,6 +323,18 @@ Configuration options reference
 
   Specifies a custom redirect URL for OAuth2 authentication instead of the default
 
+#### authentication.ldap.enabled (boolean: false)
+
+  Enable or disable authentication via LDAP logins
+  Requires manual installation of `passport-ldapauth` module via npm
+
+#### authentication.ldap.url
+#### authentication.ldap.bindDn
+#### authentication.ldap.bindCredentials
+#### authentication.ldap.searchBase
+#### authentication.ldap.searchFilter
+#### authentication.ldap.searchAttributes
+
 #### authentication.local.enabled (boolean: false)
 
   The Local setup allows you to specify an array of username/password/email elements that will have access to the Wiki. All the accounts must resides in the configuration `authentication.local.accounts` array
@@ -343,13 +373,15 @@ Configuration options reference
 
 #### features.markitup (boolean: false)
 
-  Whether to enable Markitup or not
+  DEPRECATED: markitup support has been removed as of version 1.8.0
 
 #### features.codemirror (boolean: true)
 
   Whether to enable Codemirror or not.
 
-  Please note that you cannot enable both editors at the same time.
+#### features.gravatar (boolean: true)
+
+  Whether to enable gravatar support or not
 
 #### server.hostname
 
@@ -387,9 +419,9 @@ Configuration options reference
 
   This is a regular expression which will be used against the user email account to be able to access the wiki. By default all emails are OK, but you can for example set a filter so that only the hostname from your company will be allowed access.
 
-#### authorization.emptyEmailMatches (boolean: true)
+#### authorization.emptyEmailMatches (boolean: false)
 
-  If the endpoint doesn't provide the email address for the user, allow empty emails to authenticate anyway. The `true` default is set for legacy reasons
+  If the endpoint doesn't provide the email address for the user, allow empty emails to authenticate anyway. Note that GitHub authentication usually requires this to be `true` (unless all wiki users have public email addresses on their GitHub accounts).
 
 #### pages.index (string: "Home")
 
