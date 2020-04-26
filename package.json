@@ -1,6 +1,6 @@
 {
   "name": "jingo",
-  "version": "1.8.3",
+  "version": "1.9.4",
   "description": "A nodejs based wiki engine",
   "author": "Claudio Cicali <claudio.cicali@gmail.com>",
   "keywords": [
@@ -61,7 +61,7 @@
     "passport-local": "^1.0.0",
     "passport-openstreetmap": "^0.1.2",
     "pg": "^6.4.2",
-    "pug": "^2.0.0-beta11",
+    "pug": "^2.0.0-rc.4",
     "semver": "^5.3.0",
     "serve-favicon": "^2.4.5",
     "transliteration": "^0.2.1"
