@@ -1,0 +1,8 @@
+
+{
+  "reporter":"spec",
+  "require":"test/support/setup",
+  "check-leaks":true
+  "recursive":true
+  "globals":"strNew"
+}
